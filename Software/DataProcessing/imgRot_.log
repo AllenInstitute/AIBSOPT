@@ -1,0 +1,51 @@
+[System]
+Scanner=SkyScan3000
+; A string with at least 11 characters. Typically, the first 7 characters refer to the company, and the last 4 characters are 4-digits ---
+; scanner model (in case of non-digits, it is interpreted as 0) . Model number 0-2999: X-ray systems;
+; Model 3000-3999: Optical scanner systems
+; Please respect the number of letters: hardcoded inside NRecon.
+Instrument S/N=2
+; info only: serial number of the scanner
+[Acquisition]
+Optical Axis (line)= 1011
+; Important parameter: the central slice in which the x-ray hits the detector perpendicularly;
+Object to Source (mm)=100000
+; Important parameter: distance between image center and the x-ray source. If the distance is > 10m, it is assumed that it is a
+; parallel beam scan.
+Number Of Files= 400
+; Info only. Number of projections, dimension and pixel . information are actually obtained/confirmed from the TIFF files
+Number Of Rows= 2054
+; info only
+Number Of Columns= 2456 
+NRecon User Manual 512
+; info only
+Image Pixel Size (um)=7.9
+; info only. The pixel size is actually read from the header of the 16-bit TIFF files.
+; Important! For cone-beam geometry: the concept of "virtual detector" is exploit. More specifically, the detector is
+; assumed to be centered at the FOV.
+; Therefore, the pixel size in the TIFF header should have been scaled accordingly.
+; Alternatively, one may use the non-standard key Scaled Image Pixel Size (um) to indicate pixel size scaled at image center.
+Linear pixel value=0
+; Non-standard key. Default: 0, exponential attenuation case; 1: Linear case ; -1: inverse linear
+Scaled Image Pixel Size (um)=13.8
+; Non-standard key. When present, it has higher priority than pixel information in TIF header
+Exposure (ms)=5
+; info only
+Rotation Step (deg)=0.900
+; Important parameter
+Table Feed (micron)=0.0
+; Spiral CT specific: table movement length per rotation step
+; Positive: table movement direction coincides with projection vertical direction
+Use 360 Rotation=YES
+; Important parameter: YES or NO (360 or 180+)
+Flat Field Correction=ON
+; info only
+Rotation Direction=CC
+; Important parameter: TRY IT OUT TO SEE IF IT SHOULD BE cc OR cw. Almost all SkyScan scanners have rotation direction CC.
+Type of Detector Motion=STEP AND SHOOT
+; info only
+Scanning Trajectory=ROUND
+; info only. Spiral scan is recognized by entry “table feed”
+Study Date and Time=Aug 10, 2005 15:13:11
+; info only
+# End of log file

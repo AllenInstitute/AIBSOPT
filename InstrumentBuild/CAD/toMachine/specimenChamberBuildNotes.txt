@@ -1,0 +1,5 @@
+Specimen chamber for demo system built from 3 1/4" x 4" x 1.2 mm glass slides (Brain Research Laboratories part 3140).  These were cut to size w/ glass cutter and glued together with Dow Corning #732 clear silicone sealant.  That product from Dow has been robust to dibenzyl ether as immersion medium over months of use.  
+
+Nominal dimensions of chamber are given in sliceSpecimenChamber drawing v1.pdf. As long as assembled chamber fits within space provided, can hold sufficient immersion medium to immerse specimen, and presents a flat face through transmission path to detection lens and to fluorescence excitation, dimensions can be altered significantly to suit.
+
+NB : Many commercial options for compatible cuvettes are available.  Critical dimensions are width and length to accommodate sample holder puck and depth to hold sample.  A 50 mm x 50 mm x 25 mm cuvette would be appropriate. Material can be glass or quartz and should be OK with 2 polished sides. 
