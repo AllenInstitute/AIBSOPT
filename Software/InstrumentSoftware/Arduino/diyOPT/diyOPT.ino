@@ -1,21 +1,19 @@
 /****************************************************************************** 
+AIBSopt optDriverBoard shield sketch.
+Drives stepper motor with BigEasyDriver.
+Toggles pins for illumination through channels 1-5. 
+
+Motor driver code based on:
+
 SparkFun Big Easy Driver Basic Demo
 Toni Klopfenstein @ SparkFun Electronics
 February 2015
 https://github.com/sparkfun/Big_Easy_Driver
 
-Simple demo sketch to demonstrate how 5 digital pins can drive a bipolar stepper motor,
-using the Big Easy Driver (https://www.sparkfun.com/products/12859). Also shows the ability to change
-microstep size, and direction of motor movement.
+PRNicovich
+Allen Institute for Brain Science
+2019
 
-Development environment specifics:
-Written in Arduino 1.6.0
-
-This code is beerware; if you see me (or any other SparkFun employee) at the local, and you've found our code helpful, please buy us a round!
-Distributed as-is; no warranty is given.
-
-Example based off of demos by Brian Schmalz (designer of the Big Easy Driver).
-http://www.schmalzhaus.com/EasyDriver/Examples/EasyDriverExamples.html
 ******************************************************************************/
 //Declare pin functions on Arduino
 #define stp 2
