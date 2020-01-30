@@ -3,19 +3,22 @@ Components and assembly for AIBSOPT
 # CAD
 	Includes STEP file of instrument assembly with all physical components and instrument rendering.  
 	
-	.\Machined includes individual STEP files and drawings of parts to machine:
+	.\CAD\toMachine includes individual STEP files and drawings of parts to machine:
 		- Extended motor shaft (BearingShaft.step, BearingShaftClamp.step, diyOPTShaftExplode Drawing v0.pdf). Make 1 assembly from aluminum. 
 		- Motor mount (Nema17OPTmotorMountv2 v2.step and .pdf). Make 1 from aluminum. 
 		- Sample holder puck (sampleHolderPuck.pdf and .step).  Make 1-4 from *magnetic* stainless steel.
 		- Specimen chamber (slideSpecimenChamber drawing v1.pdf). Make as described, or purchase.
+		
+	.\CAD\DriverBoard
+		- Files to laser cut mount for optMotorButtonBoard to Imperial optical table.  Cut from acrylic and use standard PCB stand-offs to mount PCB.
+		
+	
+# PCB Files
 
-	.\EAGLE : Schematic for Arduino motor shield. Assembled on generic Arduino protoboard shield, though custom PCB would likely be straightforward. 
-		Required parts: 
-			- Proto shield
-			- Big Easy Driver (SparkFun 12859; https://www.sparkfun.com/products/12859). Qty 1.
-			- PCB pushbutton (Adafruit 367 or ubiquitous equivalent). Qty 1.
-			- Screw terminal blocks, 5 mm pitch (Pololu 2440 or equivalent). Qty 6.
-			- 10 kOhm resistor. Qty 1.
+	.\EAGLE : Schematic for Arduino motor shield and remote button board for instrument control.
+		- optMotorDriver BOM.txt includes parts required for assembly and links to order PCB
+		- Can upload .brd files to favorite PCB fab service to order
+		- Mount to optical table with .\CAD\DriverBoard part
 
 # Notes on assembly and alignment:
 
