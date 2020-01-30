@@ -1,3 +1,5 @@
+Bill of Materials:
+
 Motor Driver
 
 Qty 1	-	PCB - https://oshpark.com/shared_projects/wNfLnFC4
@@ -24,3 +26,13 @@ Qty 2	-	Wurth Electronik 624008213322 - 2 x 4 pin terminal housing
 Qty 16	-	Molex 0008700058 crimp socket, 22-28 AWG
 Qty 1	-	8 connector, 26 AWG cable, 1m; Tensility International Corp 30-01319
 
+------------------------------------------------------------------------------------
+
+Build Notes:
+
+Stepper motor mounts to A and B coil ports. Connect light sources to 'ChanX' output terminal block.  
+Thorlabs LED T cubes connect through BNC pigtail cable. 
+Connecting camera to trigger terminal is optional.  
+Power through wall wart supply with 5.5 mm x 2.1 mm connector, 12v, 0.5 A output.
+
+Button board lets you switch on/off channels, move motor outside the enclosure.

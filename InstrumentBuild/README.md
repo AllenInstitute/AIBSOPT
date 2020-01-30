@@ -12,14 +12,13 @@ Components and assembly for AIBSOPT
 	.\CAD\DriverBoard
 		- Files to laser cut mount for optMotorButtonBoard to Imperial optical table.  Cut from acrylic and use standard PCB stand-offs to mount PCB.
 		
-	.\CAD\LaserLaunch
-		- CAD files for including lasers for OPT illumination.  Work in progress.
 	
 # PCB Files
 
 	.\EAGLE : Schematic for Arduino motor shield and remote button board for instrument control.
 		- optMotorDriver BOM.txt includes parts required for assembly and links to order PCB
 		- Can upload .brd files to favorite PCB fab service to order
+		- Mount to optical table with .\CAD\DriverBoard part
 
 # Notes on assembly and alignment:
 
