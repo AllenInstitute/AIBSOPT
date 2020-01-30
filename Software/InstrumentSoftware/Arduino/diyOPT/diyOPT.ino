@@ -24,10 +24,13 @@ http://www.schmalzhaus.com/EasyDriver/Examples/EasyDriverExamples.html
 #define MS2 5
 #define MS3 6
 #define EN  7
-#define btn 12
+#define btn 15
 #define led 13
-#define transLED 10
-#define fluorLED 8
+#define chan1 10
+#define chan2 8
+#define chan3 9
+#define chan4 11
+#define chan5 12
 
 //Declare variables for functions
 char user_input;
@@ -49,13 +52,19 @@ void setup() {
   pinMode(EN, OUTPUT);
   pinMode(btn, INPUT);
   pinMode(led, OUTPUT);
-  pinMode(transLED, OUTPUT);
-  pinMode(fluorLED, OUTPUT);
+  pinMode(chan1, OUTPUT);
+  pinMode(chan2, OUTPUT);
+  pinMode(chan3, OUTPUT);
+  pinMode(chan4, OUTPUT);
+  pinMode(chan5, OUTPUT);
 
   digitalWrite(EN, LOW); //Pull enable pin low to set FETs active and allow motor control
 
-  digitalWrite(transLED, LOW);
-  digitalWrite(fluorLED, LOW);
+  digitalWrite(chan1, LOW);
+  digitalWrite(chan2, LOW);
+  digitalWrite(chan3, LOW);
+  digitalWrite(chan4, LOW);
+  digitalWrite(chan5, LOW);
   
   resetBEDPins(); //Set step, direction, microstep and enable pins to default states
   
@@ -124,19 +133,43 @@ void loop() {
       }
       else if(user_input == 'T')
       {
-        digitalWrite(transLED, HIGH);
+        digitalWrite(chan1, HIGH);
       }
       else if(user_input == 't')
       {
-        digitalWrite(transLED, LOW);
+        digitalWrite(chan1, LOW);
       }
       else if(user_input == 'F')
       {
-        digitalWrite(fluorLED, HIGH);
+        digitalWrite(chan2, HIGH);
       }
       else if(user_input == 'f')
       {
-        digitalWrite(fluorLED, LOW);
+        digitalWrite(chan2, LOW);
+      }
+      else if(user_input == 'G')
+      {
+        digitalWrite(chan3, HIGH);
+      }
+      else if(user_input == 'g')
+      {
+        digitalWrite(chan3, LOW);
+      }
+      else if(user_input == 'H')
+      {
+        digitalWrite(chan4, HIGH);
+      }
+      else if(user_input == 'h')
+      {
+        digitalWrite(chan4, LOW);
+      }
+      else if(user_input == 'J')
+      {
+        digitalWrite(chan5, HIGH);
+      }
+      else if(user_input == 'j')
+      {
+        digitalWrite(chan5, LOW);
       }
 
       else if (user_input == '\n'){
