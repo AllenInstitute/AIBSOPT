@@ -1,0 +1,26 @@
+Motor Driver
+
+Qty 1	-	PCB - https://oshpark.com/shared_projects/wNfLnFC4
+Qty 1	-	BigEasyDriverBoard; Sparkfun ROB-12859
+Qty 48	-	Male header strip; Adafruit 392 or equivalent
+Qty 1	-	Wurth Electronik 62400821722 - 2 x 4 pin connector
+Qty 8	-	Adafruit 1 x 2 @ 3.5 mm screw terminal 
+Qty 7	-	10kΩ resistors, 1206 package
+Qty 1	-	5.2mm SMD tactile switch
+Qty 1	-	2.1mm x 5.5mm THM DC jack with internal switch. Digikey part #PJ-102A, 4UCON part #05537   
+
+
+Button board
+
+Qty 1	-	PCB	-	https://oshpark.com/shared_projects/HRr4mtPy
+Qty 2	-	Sparkfun COM-09190 - 12 mm pushbutton switch
+Qty 5	-	Nidek Copal Electronics ATE1E-2M3-10-Z - toggle switch
+Qty 1	-	Wurth Electronik 62400821722 - 2 x 4 pin connector
+
+
+Connector cable
+
+Qty 2	-	Wurth Electronik 624008213322 - 2 x 4 pin terminal housing
+Qty 16	-	Molex 0008700058 crimp socket, 22-28 AWG
+Qty 1	-	8 connector, 26 AWG cable, 1m; Tensility International Corp 30-01319
+
