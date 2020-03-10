@@ -1,0 +1,125 @@
+Build notes for laser illumination on AIBS OPT.
+
+Goal is to have a high-powered light source with narrow line widths for improved imaging performance over LED illumination.  Laser line widths make it easier to find appropriate optical filters for multi-colored imaging.  
+
+For laser launch, requirement is for lasers in desired wavelengths combined into single multi-mode fiber with despeckler.  Implementation here is a simplified NicoLase 1200 design supporting two diode lasers (488 nm and 552 nm nominal wavelengths) with EvenField despeckler into Thorlabs square-core multimode fiber. Fiber choice is dictated by NA. The square-core Thorlabs fiber has an NA of 0.39; Thorlabs also sells a number of typical round-core fibers with same or higher NA for ~$50 less. Any should work but only the square-core fiber we had on hand was tested.   
+
+Small footprint of the laser launch allows it to fit onto a 12" x 12" breadboard for easy deployment. Two lines is sufficient for desired experiments. Enclosure holds laser launch in compact box that is easy to fit on a shelf.  Drill some holes into top panel and you can use screws or zip ties to mount laser control remotes and motor driver board on exterior.  
+
+Illuminator takes fiber output and generates homogeneous hexagon of light at the specimen plane. Using a fiber of lower NA could result in less even illumination out of the hexagonal light pipe. In that case a longer light pipe (eg the Edmund 50 mm 49-402 vs Edmund 25 mm 63-082 quoted here) may be adventageous. The illuminator assembly fits into lens tubes of similar dimension to Thorlabs LED, so swapping out illumination choices is straightforward.
+
+Illuminator uses a single lens to project front hexagonal face of light pipe onto specimen. This means focusing and magnfication are coupled. For the #63-082 pipe, the front face is 4.0 mm across the flats.  The illuminator should sit near the OPT collection lens, but behind the front element of that component.  This is a minimum distance of ~170 mm from the specimen.  With a f = 35 mm lens, this would mean placing the lens (1 / 35 mm) = (1 / 170 mm) - (1 / x) ; x = 44 mm away from the light pipe output.  This yields a M = 170 / 44 = 3.8x magnification, for a spot 15.2 mm across the hexagonal flats.  If the distance was 190 mm, the spot would be 17.6 mm.  In most cases a smaller spot size is preferred to preserve illumination intensity over the specimen, so a shorter distance (or longer focal length lens) is preferred.
+ 
+TTL outputs from laser head or remote can go directly into OPT Motor Board.  Home-made SMB pigtails were used on our implementation.  
+
+Cost is mostly price of laser diodes ($~15k for models used here), with another $~3k in optics, filters, and machined parts to complete build. 
+
+~~~~~~~~~~  Laser launch ~~~~~~~~~~  
+
+Bill of Materials
+To machine:
+NicoLase 1200 heat sink block : https://github.com/PRNicovich/NicoLase/blob/master/Hardware/HeatSinkMount/NicoLase3200HeatSinkBlock.step
+Evenfield motor block and arbor : https://github.com/AllenInstitute/EvenField/blob/master/Hardware/CAD/diffuserMotorAssembly.step
+
+Thorlabs:
+[NicoLase 1200]
+MB1212
+POLARIS-K1 x 2
+RP05P x 2
+PF10-01-P01 
+CF125 x 2
+
+
+[Evenfield coupler]
+KB1C
+PF10-01-P01 
+CP02
+SM1L10
+S1TM09
+C220TMD
+CT1
+CT102
+SM05FC
+ER6 x 2
+ER3
+CP02B
+RS6M
+RS3M
+RS05P x 2
+M102L05
+CF125 x 2
+
+Chroma:
+ZT514rdc in 25 mm round, mounted 
+nb - substitute with part appropriate for your lasers
+
+Edmund
+[Evenfield illuminator diffuser]
+#47-989, mounting ring removed and center hole drilled.  See https://github.com/AllenInstitute/EvenField/blob/master/Hardware/CAD/diffuserMotorAssembly.step
+
+Polou:
+#3036, gear motor
+
+Laser diodes:
+Coherent OBIS 552 nm, 100 mW with remote
+Vortran Stradus 488 nm, 150 mW with remote
+Any NicoLase-compatible laser diode will work here if you want different wavelengths.
+
+Optional:
+Evenfield motor driver :
+https://github.com/AllenInstitute/EvenField/tree/PCBAddition/Hardware/MotorDriverPCB
+
+~~~~~~~~~~  Enclosure ~~~~~~~~~~ 
+
+Assembly is in file ./AIBSOPT/InstrumentBuild/CAD/OPTLaserLaunch.step.
+
+Bill of Materials
+To machine:
+Panels were made from 1/4" black foamcore (Thorlabs TB4).  
+Top panel - 359 mm x 359 mm with 6.5 mm holes at 12.5 mm from corners, access slot for internal cables.
+3 x Side panels - 324 mm x 150 mm with 12 mm x 15 mm knotchees in each corner. 
+As per Side panel, but with 14 mm diameter holes for grommets for fiber, motor wires
+
+80/20:
+All 1" Series 10 T slot profile.  All taps 1/4"-20 and access holes 5.1 mm.
+4 x 159 mm w/ end tapped, other end 2 x access holes at 12.7 mm
+6 x 309 mm w/ both ends tapped
+2 x 309 mm w/ both ends tapped, 2 x access holes on same face at 27 mm from either end
+2 x 359 mm w/ 4 x access holes, 12.7 mm from both ends on both faces
+Hardware:
+20 x 3682 standard fastener
+4 x 3313 roll-in T nut with set screw or similar
+4 x 3382 slide-in T nut or similar
+
+McMaster-Carr:
+2 x 9307K131 grommets.  Split with knife to wrap around optical fiber.
+4 x 9541K83 feet or similar
+
+~~~~~~~~~~  Illuminator ~~~~~~~~~~ 
+
+Bill of Materials:
+To print/machine:
+HexLightPipeToSM1Adapter - Print or machine from variety of materials - ./AIBSOPT/InstrumentBuild/CAD/toMachine/HexLightPipeToSM1Adapter.step or ./AIBSOPT/InstrumentBuild/CAD/toMachine/HexLightPipeToSM1Adapter.stl
+
+Thorlabs:
+SM1V05
+SM1L05
+2 x SM1RR
+SM1FC
+SM1M20
+AC254-035-A (can substitute different focal length depending on application)
+
+
+Edmund:
+#63-082 light pipe
+
+McMaster:
+94355A217 or similar 4-40 set screws, 1/2" long recommended
+
+~~~~~~~~~~  Emission filter ~~~~~~~~~~
+
+Semrock FF01-512/630-50, mounted. Mount with existing adapter on front of collection lens.
+
+
+
+

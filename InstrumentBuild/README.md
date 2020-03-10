@@ -7,10 +7,17 @@ Components and assembly for AIBSOPT
 		- Extended motor shaft (BearingShaft.step, BearingShaftClamp.step, diyOPTShaftExplode Drawing v0.pdf). Make 1 assembly from aluminum. 
 		- Motor mount (Nema17OPTmotorMountv2 v2.step and .pdf). Make 1 from aluminum. 
 		- Sample holder puck (sampleHolderPuck.pdf and .step).  Make 1-4 from *magnetic* stainless steel.
-		- Specimen chamber (slideSpecimenChamber drawing v1.pdf). Make as described, or purchase.
+		- Specimen chamber (specimenChamberBuildNotes.txt):
+			DIY - slideSpecimenChamber drawing v1.pdf
+			----OR----
+			Purchase Hellma 50 mm large cuvette (Sigma-Aldrich part Z805750), machine OPTCuvetteBase.step, assemble CuvetteStandAssembly.step
+			
 		
 	.\CAD\DriverBoard
 		- Files to laser cut mount for optMotorButtonBoard to Imperial optical table.  Cut from acrylic and use standard PCB stand-offs to mount PCB.
+		
+	.\CAD\laserLaunch
+		- Assemblies and build details on adding laser illumination to OPT.  Includes laser combiner + launch w/ speckle reducer and fiber coupling, enclosure, and laser illuminator.
 		
 	
 # PCB Files
