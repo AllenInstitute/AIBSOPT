@@ -2,7 +2,7 @@ Bill of Materials:
 
 Motor Driver
 
-Qty 1	-	PCB - https://oshpark.com/shared_projects/wNfLnFC4
+Qty 1	-	PCB - https://oshpark.com/shared_projects/akx3myRT
 Qty 1	-	BigEasyDriverBoard; Sparkfun ROB-12859
 Qty 48	-	Male header strip; Adafruit 392 or equivalent
 Qty 1	-	Wurth Electronik 62400821722 - 2 x 4 pin connector
@@ -14,7 +14,7 @@ Qty 1	-	2.1mm x 5.5mm THM DC jack with internal switch. Digikey part #PJ-102A, 4
 
 Button board
 
-Qty 1	-	PCB	-	https://oshpark.com/shared_projects/HRr4mtPy
+Qty 1	-	PCB	-	https://oshpark.com/shared_projects/rrk3NWli
 Qty 2	-	Sparkfun COM-09190 - 12 mm pushbutton switch
 Qty 5	-	Nidek Copal Electronics ATE1E-2M3-10-Z - toggle switch
 Qty 1	-	Wurth Electronik 62400821722 - 2 x 4 pin connector
