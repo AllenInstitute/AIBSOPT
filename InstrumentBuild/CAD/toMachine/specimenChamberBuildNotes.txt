@@ -1,5 +1,11 @@
+~~~~~~~~ DIY OPTION ~~~~~~~~ 
+
 Specimen chamber for demo system built from 3 1/4" x 4" x 1.2 mm glass slides (Brain Research Laboratories part 3140).  These were cut to size w/ glass cutter and glued together with Dow Corning #732 clear silicone sealant.  That product from Dow has been robust to dibenzyl ether as immersion medium over months of use.  
 
 Nominal dimensions of chamber are given in sliceSpecimenChamber drawing v1.pdf. As long as assembled chamber fits within space provided, can hold sufficient immersion medium to immerse specimen, and presents a flat face through transmission path to detection lens and to fluorescence excitation, dimensions can be altered significantly to suit.
 
-NB : Many commercial options for compatible cuvettes are available.  Critical dimensions are width and length to accommodate sample holder puck and depth to hold sample.  A 50 mm x 50 mm x 25 mm cuvette would be appropriate. Material can be glass or quartz and should be OK with 2 polished sides. 
+~~~~~~~~ PURCHASE OPTION ~~~~~~~~ 
+
+Commercial cuvette such as Hellma 50 mm large cell (Sigma-Aldrich Z805750) works well in this application.  Is easier to use and requires a smaller volume than the DIY cuvette above. Plus it doesn't have any chance of leaking!
+
+On OPT, this cuvette sits on stand OPTCuvetteBase.step, machined from aluminum or other material impervious to immersion fluid.  This part has 6 places for 4 mm diameter locating pins (McMaster-Carr 97493A114), as shown in CuvetteStandAssembly.step.  In practice it is likely easier to use only 4, 2 to locate back edge of cuvette nearest to transmission path white LED, and 2 to locate one side of cuvette.  Then cuvette installation would involve pushing cuvette to be flush to these 4 pins.  Stand should be centered in light path and has some movement backwards + forwards towards collection lens to find best focus. Be sure to focus with target in immersion fluid in the cuvette!
