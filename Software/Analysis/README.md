@@ -21,7 +21,7 @@ A `requirements.txt` file is provided for creating a conda environment to run th
 From a terminal inside the `Analysis` directory, run the following commands:
 
 ```bash
-$ conda create --name OPT --file requirements.txt
+$ conda env create --file environment.yml
 $ conda activate OPT
 ```
 
