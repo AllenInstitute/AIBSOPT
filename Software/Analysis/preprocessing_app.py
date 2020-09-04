@@ -388,7 +388,7 @@ class App(QWidget):
                                      'trans', 
                                      'native', 
                                      'recon', 
-                                     'imgRot__rec*.' + 
+                                     'imgRot__rec[0-9]*.' + 
                                      'tif')
             
             images = glob.glob(search_string)
