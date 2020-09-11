@@ -2,7 +2,6 @@ import numpy as np
 from PIL import Image
 import glob
 import os
-import pwd
 
 from scipy.ndimage import gaussian_filter
 from skimage.transform import resize
