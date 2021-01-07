@@ -69,10 +69,10 @@ class App(QWidget):
                           'Probe E2': 10, 'Probe F2': 11,
                      }
 
-        self.color_map = {'Probe A1': 'darkred', 'Probe B1': 'peru',
+        self.color_map = {'Probe A1': 'darkred', 'Probe B1': 'cadetblue',
                      'Probe C1': 'goldenrod', 'Probe D1' : 'darkgreen',
                      'Probe E1': 'darkblue', 'Probe F1': 'blueviolet',
-                     'Probe A2': 'red', 'Probe B2': 'orange',
+                     'Probe A2': 'red', 'Probe B2': 'darkturquoise',
                      'Probe C2': 'yellow', 'Probe D2' : 'green',
                      'Probe E2': 'blue', 'Probe F2': 'violet'}
 
