@@ -50,6 +50,7 @@ dependencies:
   - tk=8.6.8
   - toolz=0.10.0
   - tornado=6.0.2
+  - vtk=8.2.0
   - wheel=0.33.4
   - xz=5.2.4
   - yaml=0.2.5

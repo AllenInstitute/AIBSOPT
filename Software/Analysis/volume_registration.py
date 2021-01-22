@@ -9,8 +9,6 @@ from mpl_toolkits.mplot3d import Axes3D
 
 from scipy.spatial.distance import euclidean
 
-
-
 def loadVolume(fname, _dtype='u1'):
 
     """
