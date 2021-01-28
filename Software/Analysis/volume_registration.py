@@ -109,7 +109,7 @@ def plot_transform(source_landmarks, target_landmarks):
     ok_points = source_landmarks[:,0] > 0
 
     ax.scatter(source_landmarks[ok_points,0],source_landmarks[ok_points,1],
-               source_landmarks[ok_points,2],s=4,c='tan')
+               -source_landmarks[ok_points,2],s=4,c='tan')
 
     distances = []
 
@@ -118,8 +118,12 @@ def plot_transform(source_landmarks, target_landmarks):
         
         ax.plot3D([source_landmarks[i,0],target_landmarks[i,0]],
                  [ source_landmarks[i,1],target_landmarks[i,1]],
-                   [source_landmarks[i,2],target_landmarks[i,2]]
+                   [-source_landmarks[i,2],-target_landmarks[i,2]]
                   ,'-k',alpha=0.35)
+
+    plt.xlabel('AP')
+    plt.ylabel('LR')
+    ax.set_zlabel('DV')
 
     plt.show()
 
