@@ -163,7 +163,7 @@ def process_volume(input_directory,
 
     print(input_directory)
     print(output_directory)
-    image_types = ('trans',) #('fluor', 'trans')
+    image_types = ('fluor', 'trans')
 
     for type_index, image_type in enumerate(image_types):
 
