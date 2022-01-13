@@ -20,12 +20,14 @@ import warnings
 
 import os
 
+NEW_OPT = False
+
 DOWNSAMPLE_FACTOR = 8
 IMG_WIDTH = 700
 DEFAULT_SLICE = 100
 
 class App(QWidget):
- 
+
     def __init__(self):
         super().__init__()
         self.title = 'OPT Preprocessing'
@@ -41,9 +43,9 @@ class App(QWidget):
         self.yshift = [0,0,0]
 
         self.initUI()
-     
+
     def initUI(self):
-        
+
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
 
@@ -59,7 +61,7 @@ class App(QWidget):
         #self.image.setPixmap(QPixmap.fromImage(imQt))
 
         grid.addWidget(self.image, 0, 0, 4, 4)
-    
+
         self.slider = QSlider(Qt.Horizontal)
         self.slider.setMinimum(0)
         self.slider.setMaximum(100)
@@ -126,7 +128,7 @@ class App(QWidget):
         self.lock_button.clicked.connect(self.lock)
         self.lock_button.setStyleSheet("background-color: darkred")
         self.lock_button.setIcon(QIcon('icons/lock.png'))
-        
+
         save_button = QPushButton('Save', self)
         save_button.setToolTip('Save transformations to JSON')
         save_button.clicked.connect(self.saveData)
@@ -177,8 +179,8 @@ class App(QWidget):
 
         self.data_loaded = False
 
-        self.dictionary = {  
-                "location" : '',  
+        self.dictionary = {
+                "location" : '',
                 "mouse" : '',
                 "rot1" : 0,
                 "rot2" : 0,
@@ -187,7 +189,7 @@ class App(QWidget):
                 "offset2" : 0,
                 "downsample_factor" : DOWNSAMPLE_FACTOR,
                 "output_directory" : ''
-            }  
+            }
 
         self.setLayout(grid)
         self.refreshImage()
@@ -196,31 +198,31 @@ class App(QWidget):
     def keyPressEvent(self, e):
 
         pass
-        
+
         #if e.key() == Qt.Key_Backspace:
         #    self.deletePoint()
         #elif e.key() == Qt.Key_D:
         #    self.moveForward()
         #elif e.key() == Qt.Key_A:
         #    self.moveBackward()
-        
+
     def xShiftRight(self):
-        
+
         self.yshift[self.currentAxis] += 1
         self.refreshImage()
 
     def xShiftLeft(self):
-        
+
         self.yshift[self.currentAxis] -= 1
         self.refreshImage()
-        
+
     def yShiftUp(self):
-        
+
         self.xshift[self.currentAxis] -= 1
         self.refreshImage()
 
     def yShiftDown(self):
-        
+
         self.xshift[self.currentAxis] += 1
         self.refreshImage()
 
@@ -232,7 +234,7 @@ class App(QWidget):
     def rotateClockwise(self):
 
         self.rotations[self.currentAxis] -= 1
-        self.refreshImage() 
+        self.refreshImage()
 
     def rotateCounterClockwise10x(self):
 
@@ -242,10 +244,10 @@ class App(QWidget):
     def rotateClockwise10x(self):
 
         self.rotations[self.currentAxis] -= 10
-        self.refreshImage() 
+        self.refreshImage()
 
     def selectZAxis(self):
-        self.currentAxis = 2 
+        self.currentAxis = 2
         self.updateSlider()
         self.refreshImage()
 
@@ -255,7 +257,7 @@ class App(QWidget):
         self.refreshImage()
 
     def selectXAxis(self):
-        self.currentAxis = 0 
+        self.currentAxis = 0
         self.updateSlider()
         self.refreshImage()
 
@@ -263,7 +265,7 @@ class App(QWidget):
 
         self.currentSlice[self.currentAxis] = self.slider.value()
         self.refreshImage()
-    
+
     def updateSlider(self):
         self.slider.setMaximum(self.volume.shape[self.currentAxis])
         self.slider.setValue(self.currentSlice[self.currentAxis])
@@ -278,20 +280,20 @@ class App(QWidget):
             arrays = []
 
             num_slices = self.volume.shape[self.currentAxis]
-            
+
             for slice_num in range(num_slices):
-                
+
                 printProgressBar(slice_num+1, num_slices)
 
                 arr = np.take(self.volume, slice_num, axis=self.currentAxis)
                 arr = rotate(arr, self.rotations[self.currentAxis],
                              reshape=False)
 
-                arr = shift(arr, [self.xshift[self.currentAxis], 
+                arr = shift(arr, [self.xshift[self.currentAxis],
                                self.yshift[self.currentAxis]])
                 arrays.append(arr)
-                
-            self.volume = np.stack(arrays, axis=self.currentAxis)  
+
+            self.volume = np.stack(arrays, axis=self.currentAxis)
 
             keys = ['rot1','rot2','rot3']
 
@@ -303,11 +305,11 @@ class App(QWidget):
 
             self.rotations[self.currentAxis] = 0
             self.xshift[self.currentAxis] = 0
-            self.yshift[self.currentAxis] = 0   
+            self.yshift[self.currentAxis] = 0
 
-            self.lock_button.setStyleSheet("background-color: darkred")  
+            self.lock_button.setStyleSheet("background-color: darkred")
 
-            self.refreshImage() 
+            self.refreshImage()
 
     def drawVerticalLine(self, image, x, maxPts = 257, color='pink'):
 
@@ -347,13 +349,13 @@ class App(QWidget):
 
             im = rotate(im, self.rotations[self.currentAxis], reshape=False)
 
-            im = shift(im, [self.xshift[self.currentAxis], 
+            im = shift(im, [self.xshift[self.currentAxis],
                            self.yshift[self.currentAxis]])
 
-            im8 = Image.fromarray(im)            
+            im8 = Image.fromarray(im)
         else:
             im8 = Image.fromarray(np.ones((512,512),dtype='uint8')*255)
-            
+
         imQt = QImage(ImageQt.ImageQt(im8))
         imQt = imQt.convertToFormat(QImage.Format_RGB16)
 
@@ -376,7 +378,7 @@ class App(QWidget):
     def loadData(self):
 
         import glob
-        
+
         directory = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
 
         if len(directory) > 0: # is not None:
@@ -384,55 +386,64 @@ class App(QWidget):
             self.current_directory = directory
             print(self.current_directory)
 
-            search_string = os.path.join(self.current_directory, 
-                                     'trans', 
-                                     'native', 
-                                     'recon', 
-                                     'imgRot__rec[0-9]*.' + 
+            search_string = os.path.join(self.current_directory,
+                                     'trans',
+                                     'native',
+                                     'recon',
+                                     'imgRot__rec*.' +
                                      'tif')
-            
+
             images = glob.glob(search_string)
+            images.sort()
 
             filenames = images[::DOWNSAMPLE_FACTOR]
-            
+
             arrays = []
-            
+
             print('Loading downsampled volume...')
-            
+
             for file_idx, filename in enumerate(filenames):
-                
+
                 printProgressBar(file_idx+1, len(filenames))
-                arr = (np.array(Image.open(filename)) / pow(2,16) * 255).astype('uint8')
+                arr = np.array(Image.open(filename))
+
+                if NEW_OPT:
+                    arr = arr - 5000
+                    arr[arr < 0] = 0
+
+                arr = arr / pow(2,16) * 255
+                arr = arr.astype('uint8')
                 arr = arr * 3
                 arr[arr > 255] = 255
-                arrays.append(arr[::DOWNSAMPLE_FACTOR,::DOWNSAMPLE_FACTOR])
-                
+                arrays.append(arr[0:2052:DOWNSAMPLE_FACTOR,0:2052:DOWNSAMPLE_FACTOR])
+
             self.volume = np.stack(arrays)
 
             self.dictionary['location'] = self.current_directory
             self.dictionary['mouse'] = os.path.basename(self.current_directory)
 
+            self.updateSlider()
             self.data_loaded = True
             self.refreshImage()
-        
+
     def saveData(self):
 
         if self.data_loaded:
 
             import json
-            
-            output_file = os.path.join(self.current_directory, 
+
+            output_file = os.path.join(self.current_directory,
                                         'transforms.json')
 
             print('Data saved to ' + output_file)
 
-            with open(output_file, "w") as outfile:  
-                json.dump(self.dictionary, outfile) 
+            with open(output_file, "w") as outfile:
+                json.dump(self.dictionary, outfile)
 
 
 
 def printProgressBar(iteration, total, prefix = '', suffix = '', decimals = 0, length = 40, fill = '▒'):
-    
+
     """
     Call in a loop to create terminal progress bar
 
@@ -458,16 +469,16 @@ def printProgressBar(iteration, total, prefix = '', suffix = '', decimals = 0, l
     Outputs:
     --------
     None
-    
+
     """
-    
+
     percent = ("{0:." + str(decimals) + "f}").format(100 * (iteration / float(total)))
     filledLength = int(length * iteration // total)
     bar = fill * filledLength + '░' * (length - filledLength)
     sys.stdout.write('\r%s %s %s%% %s' % (prefix, bar, percent, suffix))
     sys.stdout.flush()
 
-    if iteration == total: 
+    if iteration == total:
         print()
 
 if __name__ == '__main__':
