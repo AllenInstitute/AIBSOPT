@@ -159,6 +159,7 @@ def process_volume(input_directory,
                    output_directory,
                    mouse,
                    rot1, rot2, rot3, offset1, offset2,
+                   flip_image=False,
                    imwidth=1488):
 
     print(input_directory)
@@ -193,6 +194,9 @@ def process_volume(input_directory,
         for slice_idx, filename in enumerate(images[:imwidth]):
 
             imarray = open_image(filename, rot1, offset1, offset2, imwidth)
+
+            if flip_image:
+                imarray = np.fliplr(imarray)
 
             volume_data[:,:,slice_idx] = process_image(imarray, limit1, limit2)
 
@@ -269,6 +273,11 @@ def main(argv):
        if len(dictionary['output_directory']) == 0:
            dictionary['output_directory'] = dictionary['location']
 
+       if 'flip_image' in dictionary.keys():
+         flip_image = dictionary['flip_image']
+       else:
+         flip_image = False
+
        process_volume(dictionary['location'],
                    dictionary['output_directory'],
                    dictionary['mouse'],
@@ -276,7 +285,8 @@ def main(argv):
                    dictionary['rot2'],
                    dictionary['rot3'],
                    dictionary['offset1'],
-                   dictionary['offset2'])
+                   dictionary['offset2'],
+                   flip_image)
 
 if __name__ == "__main__":
    main(sys.argv[1:])

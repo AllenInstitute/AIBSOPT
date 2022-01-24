@@ -21,6 +21,7 @@ import warnings
 import os
 
 NEW_OPT = False
+FLIP_IMAGE = False
 
 DOWNSAMPLE_FACTOR = 8
 IMG_WIDTH = 700
@@ -415,12 +416,19 @@ class App(QWidget):
                 arr = arr.astype('uint8')
                 arr = arr * 3
                 arr[arr > 255] = 255
-                arrays.append(arr[0:2052:DOWNSAMPLE_FACTOR,0:2052:DOWNSAMPLE_FACTOR])
+
+                arr = arr[0:2052:DOWNSAMPLE_FACTOR,0:2052:DOWNSAMPLE_FACTOR]
+
+                if FLIP_IMAGE:
+                    arr = np.fliplr(arr)
+
+                arrays.append(arr)
 
             self.volume = np.stack(arrays)
 
             self.dictionary['location'] = self.current_directory
             self.dictionary['mouse'] = os.path.basename(self.current_directory)
+            self.dictionary['flip_image'] = FLIP_IMAGE
 
             self.updateSlider()
             self.data_loaded = True
