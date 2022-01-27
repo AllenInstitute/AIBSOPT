@@ -21,7 +21,7 @@ import warnings
 import os
 
 NEW_OPT = False
-FLIP_IMAGE = False
+FLIP_IMAGE = True
 
 DOWNSAMPLE_FACTOR = 8
 IMG_WIDTH = 700

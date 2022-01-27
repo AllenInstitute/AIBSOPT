@@ -11,11 +11,15 @@ from scipy.ndimage import rotate
 
 import sys, getopt
 
-def open_image(filename, rotation, offset1, offset2, imwidth):
+def open_image(filename, rotation, offset1, offset2, imwidth, flip_image=False):
 
     imarray = np.array(Image.open(filename))
 
     imarray = imarray[:2052,:2052]
+
+    if flip_image:
+        imarray = np.fliplr(imarray)
+
     imarray = rotate(imarray, rotation, reshape=False, cval=200)
 
     xoffset = 300 - offset1
@@ -164,7 +168,7 @@ def process_volume(input_directory,
 
     print(input_directory)
     print(output_directory)
-    image_types = ('fluor', 'trans')
+    image_types = ('fluor','trans')
 
     for type_index, image_type in enumerate(image_types):
 
@@ -193,10 +197,7 @@ def process_volume(input_directory,
 
         for slice_idx, filename in enumerate(images[:imwidth]):
 
-            imarray = open_image(filename, rot1, offset1, offset2, imwidth)
-
-            if flip_image:
-                imarray = np.fliplr(imarray)
+            imarray = open_image(filename, rot1, offset1, offset2, imwidth, flip_image)
 
             volume_data[:,:,slice_idx] = process_image(imarray, limit1, limit2)
 
@@ -275,8 +276,10 @@ def main(argv):
 
        if 'flip_image' in dictionary.keys():
          flip_image = dictionary['flip_image']
+         print("Flipping images along L/R axis")
        else:
          flip_image = False
+         print("NOT flipping images along L/R axis")
 
        process_volume(dictionary['location'],
                    dictionary['output_directory'],
